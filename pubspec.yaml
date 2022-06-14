@@ -53,7 +53,7 @@ dependencies:
   ntp: ^2.0.0
   image_picker: ^0.8.4+4
   delayed_display: ^2.0.0
-  syncfusion_flutter_gauges: ^19.4.56
+  syncfusion_flutter_gauges: ^20.1.60
 
 
 

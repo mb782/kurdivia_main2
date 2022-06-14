@@ -36,7 +36,9 @@ class _QuestionCardState extends State<QuestionCard> {
   double percent = 0;
   double value = 0;
   Timer? timer;
-  bool selected = false;
+  bool selecteda = false;
+  bool selectedb = false;
+  bool selectedc = false;
 
 
 
@@ -74,6 +76,7 @@ class _QuestionCardState extends State<QuestionCard> {
     return Consumer<ApiService>(builder: (context, value, child) {
       return Stack(
         children: [
+
           Positioned(
             top: 130,
             left: 20,
@@ -114,15 +117,24 @@ class _QuestionCardState extends State<QuestionCard> {
               height: 335,
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 50,
-                  ),
+                  Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      child: LinearProgressIndicator(
+                        minHeight: 40,
+                        value: 0.8,
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+                      )),
+                  // const SizedBox(
+                  //   height: 50,
+                  // ),
                   DelayedDisplay(
                     delay: Duration(milliseconds: 500),
                     slidingCurve: Curves.elasticInOut,
                     child: InkWell(
                       onTap: () {
-                        selected = true;
+                        selecteda = true;
+                        selectedb = false;
+                        selectedc = false;
                         value.notifyListeners();
                       },
                       child: Container(
@@ -134,7 +146,7 @@ class _QuestionCardState extends State<QuestionCard> {
                         margin: const EdgeInsets.symmetric(horizontal: 20),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
-                          color:  kLightBlue,
+                          color: selecteda ? Colors.yellow.shade400.withOpacity(0.8) : kLightBlue,
                         ),
                         child: Text('A : ${widget.a}'),
                       ),
@@ -146,18 +158,26 @@ class _QuestionCardState extends State<QuestionCard> {
                   DelayedDisplay(
                     delay: Duration(milliseconds: 800),
                     slidingCurve: Curves.elasticInOut,
-                    child: Container(
-                      height: 80,
-                      width: MediaQuery.of(context).size.width,
-                      alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
-                      margin: const EdgeInsets.symmetric(horizontal: 20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: kLightBlue,
+                    child: InkWell(
+                      onTap: (){
+                        selecteda = false;
+                        selectedb = true;
+                        selectedc = false;
+                        value.notifyListeners();
+                      },
+                      child: Container(
+                        height: 80,
+                        width: MediaQuery.of(context).size.width,
+                        alignment: Alignment.centerLeft,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 20),
+                        margin: const EdgeInsets.symmetric(horizontal: 20),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: selectedb ? Colors.yellow.shade400.withOpacity(0.8) : kLightBlue,
+                        ),
+                        child: Text('B : ${widget.b}'),
                       ),
-                      child: Text('B : ${widget.b}'),
                     ),
                   ),
                   const SizedBox(
@@ -166,18 +186,26 @@ class _QuestionCardState extends State<QuestionCard> {
                   DelayedDisplay(
                     delay: Duration(milliseconds: 1100),
                     slidingCurve: Curves.elasticInOut,
-                    child: Container(
-                      height: 80,
-                      width: MediaQuery.of(context).size.width,
-                      alignment: Alignment.centerLeft,
-                      margin: const EdgeInsets.symmetric(horizontal: 20),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: kLightBlue,
+                    child: InkWell(
+                      onTap: (){
+                        selecteda = false;
+                        selectedb = false;
+                        selectedc = true;
+                        value.notifyListeners();
+                      },
+                      child: Container(
+                        height: 80,
+                        width: MediaQuery.of(context).size.width,
+                        alignment: Alignment.centerLeft,
+                        margin: const EdgeInsets.symmetric(horizontal: 20),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 20),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: selectedc ? Colors.yellow.shade400.withOpacity(0.8) : kLightBlue,
+                        ),
+                        child: Text('C : ${widget.c}'),
                       ),
-                      child: Text('C : ${widget.c}'),
                     ),
                   ),
                 ],

@@ -67,6 +67,8 @@ class ApiService extends ChangeNotifier {
   int entertime = 0;
   bool visibily = true;
   int index = 1;
+  Timestamp timeevent = Timestamp.now();
+  bool checkenterevent = false;
 
   // GET
   bool loadingAuth = false;
@@ -202,7 +204,14 @@ class ApiService extends ChangeNotifier {
 
     });
   }
-
+  checkntp(Timestamp ts)async{
+    DateTime ntptime = await NTP.now();
+    print(ts.toDate().toUtc().difference(ntptime.toUtc()).inSeconds);
+    if(ts.toDate().toUtc().difference(ntptime.toUtc()).inSeconds == 0){
+      checkenterevent = true;
+      notifyListeners();
+    }
+  }
 
   checkenter(Timestamp ts)async{
     DateTime ntptime = await NTP.now();

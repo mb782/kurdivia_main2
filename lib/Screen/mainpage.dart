@@ -312,20 +312,30 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
                       Positioned(
                         top: 75,
                         left: 0,
-                        child: Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                          height: 30,
-                          width: 40,
-                          decoration: const BoxDecoration(
-                              color: kBlue1,
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(30),
-                                  bottomRight: Radius.circular(30))),
-                          child: Text(
-                            eventData.opprice,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
+                        child: InkWell(
+                          onTap: ()async{
+                            DateTime ntptime = await NTP.now();
+                            Timestamp ts = snapshot.data!.docs[0].get('date');
+                            print(ntptime.toUtc());
+                            print(ts.toDate().toUtc());
+                            print(ts.toDate().toUtc().difference(ntptime.toUtc()).inSeconds);
+                            print(ntptime.toUtc().difference(ts.toDate().toUtc()).inSeconds);
+                          },
+                          child: Container(
+                            padding:
+                                EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                            height: 30,
+                            width: 40,
+                            decoration: const BoxDecoration(
+                                color: kBlue1,
+                                borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(30),
+                                    bottomRight: Radius.circular(30))),
+                            child: Text(
+                              eventData.opprice,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 15),
+                            ),
                           ),
                         ),
                       ),
@@ -338,7 +348,8 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
                             onTap: () async {
                               DateTime ntptime = await NTP.now();
                               Timestamp ts = snapshot.data!.docs[0].get('date');
-                              // value.maxsecond = ntptime.toUtc().difference(ts.toDate().toUtc()).inSeconds;
+                              value.maxsecond = ts.toDate().toUtc().difference(ntptime.toUtc()).inSeconds;
+                              value.timeevent = snapshot.data!.docs[0].get('date');
                               value.maxsecond = 2;
                               value.idevents = x;
                               // value.getnumusersadd();
