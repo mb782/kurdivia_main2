@@ -98,7 +98,10 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
                                     itemBuilder: (context, index) {
                                       {
                                         return DelayedDisplay(
-                                          delay: Duration(milliseconds: (600 * (index+1)).toInt()),
+                                          delay: Duration(
+                                              milliseconds:
+                                                  (600 + ((index + 1) * 400))
+                                                      .toInt()),
                                           fadeIn: true,
                                           slidingCurve: Curves.easeIn,
                                           child: InkWell(
@@ -107,8 +110,10 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
                                                   .size
                                                   .width,
                                               height: 200,
-                                              margin: const EdgeInsets.symmetric(
-                                                  horizontal: 20, vertical: 5),
+                                              margin:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 20,
+                                                      vertical: 5),
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(30),
@@ -126,30 +131,32 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
                                                       fit: BoxFit.cover,
                                                     ),
                                                     borderRadius:
-                                                        BorderRadius.circular(30),
+                                                        BorderRadius.circular(
+                                                            30),
                                                   ),
                                                   Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment.center,
                                                     children: [
                                                       DelayedDisplay(
-                                                        child: Center(
-                                                            child: getdata(snapshot
-                                                                .data!
-                                                                .docs[index]
-                                                                .id)),
-                                                        delay: Duration(milliseconds: (1000 * (index + 1)).toInt()),
+                                                        child: Container(
+                                                          child: getdata(
+                                                              snapshot
+                                                                  .data!
+                                                                  .docs[index]
+                                                                  .id),
+                                                        ),
+                                                        delay: Duration(
+                                                            milliseconds: (600 +
+                                                                ((index +
+                                                                    1) *
+                                                                    400))
+                                                                .toInt()),
                                                       ),
                                                     ],
                                                   ),
                                                 ],
                                               ),
                                             ),
-                                            onTap: () async {
-
-                                            },
+                                            onTap: () async {},
                                           ),
                                         );
                                       }
@@ -172,7 +179,7 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
                           );
                         }
 
-                        return const CircularProgressIndicator();
+                        return Center(child: const CircularProgressIndicator(color: Colors.black,backgroundColor: Colors.white,));
                       },
                     )),
               ),
@@ -225,7 +232,7 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
               height: 200,
               width: double.infinity,
               child: ListView(
-                shrinkWrap: true,
+                shrinkWrap: false,
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.only(top: 5),
                 children: snapshot.data!.docs.map((DocumentSnapshot document) {
@@ -233,6 +240,25 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
                       document.data()! as Map<String, dynamic>);
                   return Stack(
                     children: [
+                      Positioned(
+                          right: 0,
+                          top: 140,
+                          child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+                            width: 140,
+                            height: 30,
+                            decoration: const BoxDecoration(
+                                color: kDarkBlue,
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(30),bottomLeft: Radius.circular(30))
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(eventData.title),
+                                const Image(image: AssetImage('assets/images/share.png'),height: 15,width: 15,),
+                              ],
+                            ),
+                          )),
                       Container(
                           margin: EdgeInsets.only(top: 10, left: 100),
                           width: 150,
@@ -262,7 +288,7 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
                           height: 30,
                           width: 60,
                           decoration: const BoxDecoration(
-                              color: kDarkBlue,
+                              color: kBlue1,
                               borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(30),
                                   bottomRight: Radius.circular(30))),
@@ -271,10 +297,10 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
                             children: [
                               Text(
                                 eventData.numwinner,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 15),
                               ),
-                              Image(
+                              const Image(
                                 image: AssetImage('assets/images/medal.png'),
                                 height: 15,
                                 width: 15,
@@ -292,13 +318,13 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
                           height: 30,
                           width: 40,
                           decoration: const BoxDecoration(
-                              color: kDarkBlue,
+                              color: kBlue1,
                               borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(30),
                                   bottomRight: Radius.circular(30))),
                           child: Text(
                             eventData.opprice,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 15),
                           ),
                         ),
@@ -309,7 +335,7 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
                           top: 100,
                           left: 130,
                           child: InkWell(
-                            onTap: ()async{
+                            onTap: () async {
                               DateTime ntptime = await NTP.now();
                               Timestamp ts = snapshot.data!.docs[0].get('date');
                               // value.maxsecond = ntptime.toUtc().difference(ts.toDate().toUtc()).inSeconds;
@@ -324,9 +350,9 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
                               height: 40,
                               width: 100,
                               decoration: BoxDecoration(
-                                  color: kDarkBlue,
+                                  color: kBlue2,
                                   borderRadius: BorderRadius.circular(15)),
-                              child: Center(child: Text('Enter')),
+                              child: const Center(child: Text('Enter')),
                             ),
                           ),
                         ),
@@ -355,10 +381,9 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
             );
           }
 
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         },
       );
     });
   }
-
 }

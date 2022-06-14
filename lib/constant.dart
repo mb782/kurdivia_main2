@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 const kDarkBlue = Color(0XFF6097B2);
 const kLightBlue = Color(0XFF92dae6);
+const kBlue1 = Color(0XFF3bdad5);
+const kBlue2 = Color(0XFF13548a);
+const kBlue3 = Color(0XFF13548a);
 
 String kUser = 'Mohammad';
 
