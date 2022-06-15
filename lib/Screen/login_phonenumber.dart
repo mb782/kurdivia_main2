@@ -1,3 +1,4 @@
+import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:kurdivia/Screen/country.dart';
@@ -71,27 +72,31 @@ class PhoneNumber extends StatelessWidget implements ApiStatusLogin {
                         ),
                         Visibility(
                           visible: (value.isWaitingForCode == false) ? false : true,
-                          child: Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 70,vertical: 10),
-                              child: Theme(
-                                  data: ThemeData(
-                                    primaryColor: Colors.redAccent,
-                                    primaryColorDark: Colors.red,
-                                  ),
-                                  child: TextFormField(
-                                    controller: value.codeController,
-                                    cursorColor: Colors.purple.shade900,
-                                    decoration: InputDecoration(
-                                      label: const Center(
-                                        child: Text("code"),
-                                      ),
-
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                        borderSide: const BorderSide(),
-                                      ),
+                          child: DelayedDisplay(
+                            delay: Duration(milliseconds: 500),
+                            slidingCurve: Curves.bounceOut,
+                            slidingBeginOffset: Offset(0, 1),                            child: Container(
+                                margin: const EdgeInsets.symmetric(horizontal: 70,vertical: 10),
+                                child: Theme(
+                                    data: ThemeData(
+                                      primaryColor: Colors.redAccent,
+                                      primaryColorDark: Colors.red,
                                     ),
-                                  ))),
+                                    child: TextFormField(
+                                      controller: value.codeController,
+                                      cursorColor: Colors.purple.shade900,
+                                      decoration: InputDecoration(
+                                        label: const Center(
+                                          child: Text("code"),
+                                        ),
+
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(30),
+                                          borderSide: const BorderSide(),
+                                        ),
+                                      ),
+                                    ))),
+                          ),
                         ),
                         Align(
                           alignment: Alignment.center,

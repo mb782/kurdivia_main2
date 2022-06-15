@@ -345,14 +345,20 @@ class ApiService extends ChangeNotifier {
     });
     notifyListeners();
   }
+  void facebook ()async{
+    final fbloginresult = await FacebookAuth.instance.login();
+
+  }
 
 
 void LoginFacebook(context) async {
     try {
       final fbloginresult = await FacebookAuth.instance.login();
-      final userdata = await FacebookAuth.instance.getUserData();
+      LoginBehavior loginBehavior = LoginBehavior.webOnly;
+  final userdata = await FacebookAuth.instance.getUserData();
       final FacebookAuthCredential =
       FacebookAuthProvider.credential(fbloginresult.accessToken!.token);
+
       await FirebaseAuth.instance.signInWithCredential(FacebookAuthCredential);
       myUser;
       fullNameController.text = userdata['name'];

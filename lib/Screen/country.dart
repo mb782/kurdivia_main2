@@ -70,20 +70,31 @@ class _InfoLoginState extends State<InfoLogin> implements ApiStatusLogin {
                       const SizedBox(
                         height: 20,
                       ),
-                      SizedBox(
+                      Container(
+                        decoration: const BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black38,
+                              blurRadius: 30,
+                              offset: Offset(0, 10),
+                            )
+                          ]
+                        ),
                         width: 350,
                         height: 50,
                         child: TextField(
                           controller: value.fullNameController,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
                             alignLabelWithHint: true,
                             label: const Center(
                               child: Text('Full name'),
                             ),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: const BorderSide(),
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(15),
                             ),
                           ),
                         ),
@@ -107,15 +118,26 @@ class _InfoLoginState extends State<InfoLogin> implements ApiStatusLogin {
                       ),
                       Visibility(
                         visible: widget.visible,
-                        child: SizedBox(
+                        child: Container(
+                          decoration: const BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black38,
+                                  blurRadius: 30,
+                                  offset: Offset(0, 5),
+                                )
+                              ]
+                          ),
                           width: 350,
                           height: 70,
                           child: IntlPhoneField(
                             decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
                               labelText: 'Phone Number',
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30),
-                                borderSide: const BorderSide(),
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(15),
                               ),
                             ),
                             onChanged: (phone) {
@@ -142,19 +164,30 @@ class _InfoLoginState extends State<InfoLogin> implements ApiStatusLogin {
                       const SizedBox(
                         height: 20,
                       ),
-                      SizedBox(
+                      Container(
+                        decoration: const BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black38,
+                                blurRadius: 30,
+                                offset: Offset(0, 10),
+                              )
+                            ]
+                        ),
                         width: 350,
                         height: 50,
                         child: TextField(
                           textAlign: TextAlign.center,
                           controller: value.occupationController,
                           decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
                             label: const Center(
                               child: Text('Occupation'),
                             ),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: const BorderSide(),
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(15),
                             ),
                           ),
                         ),
@@ -170,20 +203,31 @@ class _InfoLoginState extends State<InfoLogin> implements ApiStatusLogin {
                       const SizedBox(
                         height: 20,
                       ),
-                      SizedBox(
+                      Container(
+                        decoration: const BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black38,
+                                blurRadius: 30,
+                                offset: Offset(0, 10),
+                              )
+                            ]
+                        ),
                         width: 350,
                         height: 50,
                         child: TextField(
                           textAlign: TextAlign.center,
                           controller: value.locationController,
                           decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            filled: true,
                             label: const Center(
                               child: Text('Location'),
                             ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: const BorderSide(),
-                            ),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(15),
+                              ),
                           ),
                         ),
                       ),
@@ -204,7 +248,16 @@ class _InfoLoginState extends State<InfoLogin> implements ApiStatusLogin {
                             onTap: () {
                               value.selectdate(context);
                             },
-                            child: SizedBox(
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black38,
+                                      blurRadius: 30,
+                                      offset: Offset(0, 10),
+                                    )
+                                  ]
+                              ),
                               width: 80,
                               height: 50,
                               child: TextField(
@@ -213,14 +266,16 @@ class _InfoLoginState extends State<InfoLogin> implements ApiStatusLogin {
                                 textAlign: TextAlign.center,
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.white,
                                   label: const Center(
                                     child: Text(
                                       'Age',
                                     ),
                                   ),
                                   border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                    borderSide: const BorderSide(),
+                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.circular(15),
                                   ),
                                 ),
                               ),
@@ -241,6 +296,13 @@ class _InfoLoginState extends State<InfoLogin> implements ApiStatusLogin {
                             width: 200,
                             height: 45,
                             decoration: BoxDecoration(
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black38,
+                                  blurRadius: 20,
+                                  offset: Offset(0, 10),
+                                )
+                              ],
                               color: kDarkBlue,
                               borderRadius: BorderRadius.circular(30),
                             ),

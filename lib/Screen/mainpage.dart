@@ -78,7 +78,7 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
                 ),
               ),
               Positioned(
-                top: 130,
+                top: 120,
                 child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
@@ -113,22 +113,30 @@ class MainPage extends StatelessWidget implements ApiStatusLogin {
                                               margin:
                                                   const EdgeInsets.symmetric(
                                                       horizontal: 20,
-                                                      vertical: 5),
+                                                      vertical: 10),
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(30),
+                                                boxShadow: const [
+                                                  BoxShadow(
+                                                    color: Colors.black,
+                                                    blurRadius: 20,
+                                                    offset: Offset(0, 10),
+                                                  )
+                                                ]
                                               ),
                                               child: Stack(
                                                 children: [
                                                   ClipRRect(
                                                     child: Image(
                                                       image: const AssetImage(
-                                                          'assets/images/3.jpg'),
+                                                          'assets/images/3.png'),
                                                       width:
                                                           MediaQuery.of(context)
                                                               .size
                                                               .width,
-                                                      fit: BoxFit.cover,
+                                                      height: 200,
+                                                      fit: BoxFit.fill,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(

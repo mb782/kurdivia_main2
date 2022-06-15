@@ -55,9 +55,6 @@ dependencies:
   delayed_display: ^2.0.0
   syncfusion_flutter_gauges: ^20.1.60
 
-
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

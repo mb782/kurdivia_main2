@@ -95,6 +95,13 @@ class _InfoUserState extends State<InfoUser> implements ApiStatusLogin {
                                       width: MediaQuery.of(context).size.width,
                                       height: 570,
                                       decoration: BoxDecoration(
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              color: Colors.black38,
+                                              blurRadius: 20,
+                                              offset: Offset(0, -20),
+                                            )
+                                          ],
                                           color: Colors.grey.shade300,
                                           borderRadius: const BorderRadius.only(
                                             topRight: Radius.circular(30),
@@ -104,6 +111,7 @@ class _InfoUserState extends State<InfoUser> implements ApiStatusLogin {
                                     alignment: Alignment.bottomCenter,
                                   ),
                                   Container(
+
                                     padding:
                                     const EdgeInsets.symmetric(horizontal: 20),
                                     child: Column(
@@ -114,21 +122,23 @@ class _InfoUserState extends State<InfoUser> implements ApiStatusLogin {
                                         ),
                                         Stack(
                                           children: [
-                                            CircleAvatar(
-                                                radius: 50,
-                                                backgroundColor: kDarkBlue,
-                                                child: (data['image'] == '')
-                                                    ? Text(
-                                                  data['name']
-                                                      .split('')
-                                                      .first,
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                      FontWeight.bold,
-                                                      fontSize: 40,
-                                                      color: Colors.black),
-                                                )
-                                                    : Image.network(data['image'])),
+                                            Container(
+                                              child: CircleAvatar(
+                                                  radius: 50,
+                                                  backgroundColor: kDarkBlue,
+                                                  child: (data['image'] == '')
+                                                      ? Text(
+                                                    data['name']
+                                                        .split('')
+                                                        .first,
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                        FontWeight.bold,
+                                                        fontSize: 40,
+                                                        color: Colors.black),
+                                                  )
+                                                      : Image.network(data['image'])),
+                                            ),
                                             Positioned(
                                                 bottom: 0,
                                                 right: -10,
@@ -153,7 +163,16 @@ class _InfoUserState extends State<InfoUser> implements ApiStatusLogin {
                                         const SizedBox(
                                           height: 30,
                                         ),
-                                        SizedBox(
+                                        Container(
+                                          decoration: const BoxDecoration(
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black38,
+                                                  blurRadius: 30,
+                                                  offset: Offset(0, 10),
+                                                )
+                                              ]
+                                          ),
                                           width: MediaQuery.of(context).size.width *
                                               0.9,
                                           height: 50,
@@ -161,6 +180,8 @@ class _InfoUserState extends State<InfoUser> implements ApiStatusLogin {
                                             controller: value.fullNameController,
                                             textAlign: TextAlign.center,
                                             decoration: InputDecoration(
+                                              fillColor: Colors.white,
+                                              filled: true,
                                               suffixIcon: Container(
                                                   padding:
                                                   const EdgeInsets.symmetric(
@@ -174,9 +195,8 @@ class _InfoUserState extends State<InfoUser> implements ApiStatusLogin {
                                                       fit: BoxFit.fill)),
                                               labelText: data['name'],
                                               border: OutlineInputBorder(
-                                                borderRadius:
-                                                BorderRadius.circular(20),
-                                                borderSide: const BorderSide(),
+                                                borderSide: BorderSide.none,
+                                                borderRadius: BorderRadius.circular(15),
                                               ),
                                             ),
                                           ),
@@ -184,15 +204,26 @@ class _InfoUserState extends State<InfoUser> implements ApiStatusLogin {
                                         const SizedBox(
                                           height: 30,
                                         ),
-                                        SizedBox(
+                                        Container(
+                                          decoration: const BoxDecoration(
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black38,
+                                                  blurRadius: 30,
+                                                  offset: Offset(0, 10),
+                                                )
+                                              ]
+                                          ),
                                           width: MediaQuery.of(context).size.width *
                                               0.9,
                                           height: 50,
                                           child: TextField(
+
                                             controller: value.phoneNumberController,
                                             textAlign: TextAlign.center,
                                             decoration: InputDecoration(
                                               fillColor: Colors.white,
+                                              filled: true,
                                               suffixIcon: Container(
                                                   padding:
                                                   const EdgeInsets.symmetric(
@@ -206,9 +237,8 @@ class _InfoUserState extends State<InfoUser> implements ApiStatusLogin {
                                                       fit: BoxFit.fill)),
                                               labelText: data['phonenumber'],
                                               border: OutlineInputBorder(
-                                                borderRadius:
-                                                BorderRadius.circular(20),
-                                                borderSide: const BorderSide(),
+                                                borderSide: BorderSide.none,
+                                                borderRadius: BorderRadius.circular(15),
                                               ),
                                             ),
                                           ),
@@ -242,6 +272,13 @@ class _InfoUserState extends State<InfoUser> implements ApiStatusLogin {
                                             width: 200,
                                             height: 40,
                                             decoration: BoxDecoration(
+                                              boxShadow: const [
+                                                BoxShadow(
+                                                  color: Colors.black38,
+                                                  blurRadius: 30,
+                                                  offset: Offset(0, 10),
+                                                )
+                                              ],
                                               color: kDarkBlue,
                                               borderRadius:
                                               BorderRadius.circular(30),
